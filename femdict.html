@@ -56,8 +56,13 @@
 
   <main id="main_content">
 
+    <div class="search-container">
+      <input type="text" id="search-bar" placeholder="Search...">
+      <button type="button" id="search-btn">Search</button>
+    </div>
+
       <dl>
-        <div>
+        <div class="content">
           <dt>Agency</dt>
           <dd>Definition</dd>
             <p>
@@ -71,7 +76,7 @@
             </p>
         </div>
   
-        <div>
+        <div class="content">
           <dt>Binary</dt>
           <dd>Definition</dd>
             <p>
@@ -86,7 +91,7 @@
             </p>
           </dd>
         </div>
-        <div>
+        <div class="content">
           <dt>Equality</dt>
           <dd>Definition</dd>
             <p>
@@ -101,7 +106,7 @@
             </p>
           </dd>
         </div>
-        <div>
+        <div class="content">
           <dt>Equity</dt>
           <dd>Definition</dd>
             <p>
@@ -118,7 +123,7 @@
             </p>
           </dd>
         </div>
-        <div>
+        <div class="content">
           <dt>Feminism</dt>
           <dd>Definition</dd>
             <p>
@@ -134,7 +139,7 @@
             </p>
           </dd>
         </div>
-        <div>
+        <div class="content">
           <dt>Gender</dt>
           <dd>Definition</dd>
             <p>
@@ -151,7 +156,7 @@
             </p>
           </dd>
         </div>
-        <div>
+        <div class="content">
           <dt>Hegemony</dt>
           <dd>Definition</dd>
             <p>
@@ -168,7 +173,7 @@
             </p>
           </dd>
         </div>
-        <div>
+        <div class="content">
           <dt>Heteronormativity</dt>
           <dd>Definition</dd>
             <p>
@@ -185,7 +190,7 @@
             </p>
           </dd>
         </div>
-        <div>
+        <div class="content">
           <dt>Intersectionality</dt>
           <dd>Definition</dd>
             <p>
@@ -210,7 +215,7 @@
             </p>
           </dd>
         </div>
-        <div>
+        <div class="content">
           <dt>Oppression</dt>
           <dd>Definition</dd>
             <p>
@@ -223,7 +228,7 @@
             </p>
           </dd>
         </div>
-        <div>
+        <div class="content">
           <dt>Patriarchy</dt>
           <dd>Definition</dd>
             <p>
@@ -239,7 +244,7 @@
             </p>
           </dd>
         </div>
-        <div>
+        <div class="content">
           <dt>Sexism</dt>
           <dd>Definition</dd>
             <p>
@@ -256,6 +261,29 @@
           </dd>
         </div>
       </dl>
+      <script>
+        const searchBar = document.getElementById('search-bar');
+        const searchButton = document.getElementById('search-btn');
+        const contents = document.getElementsByClassName('content');
+      
+        searchButton.addEventListener('click', () => {
+          const searchText = searchBar.value.toLowerCase();
+      
+          for (let i = 0; i < contents.length; i++) {
+            const heading = contents[i].getElementsByTagName('dt')[0];
+            const content = contents[i].getElementsByTagName('dd')[0];
+            const text = heading.textContent + ' ' + content.textContent;
+      
+            if (text.toLowerCase().indexOf(searchText) > -1) {
+              contents[i].classList.add('highlight');
+              contents[i].scrollIntoView({behavior: 'smooth', block: 'start'});
+            } else {
+              contents[i].classList.remove('highlight');
+            }
+          }
+        });
+      </script>
+      
     </main>
 
     <footer>
