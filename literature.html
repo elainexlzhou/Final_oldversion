@@ -58,6 +58,9 @@
     
   </header>
 
+
+  <button id="sort_button">Sort</button>
+
   <main id="main_content">
 
       <div class="grid_main">
@@ -369,6 +372,40 @@
             <li>The Murder of Roger Ackroyd</li>
           </ul>
         </div>
+        <script>
+
+          const sortButton = document.getElementById("sort_button");
+          const mainContent = document.querySelector("#main_content .grid_main");
+          let isSorted = false;
+    
+          sortButton.addEventListener("click", function () {
+            const gridItems = Array.from(mainContent.querySelectorAll(".grid_main > div"));
+            
+            if (isSorted) {
+              gridItems.reverse();
+            } else {
+              gridItems.sort(function (a, b) {
+                const aText = a.querySelector("h2").textContent.trim();
+                const bText = b.querySelector("h2").textContent.trim();
+    
+                return aText.localeCompare(bText);
+              });
+            }
+    
+            mainContent.innerHTML = "";
+            
+            gridItems.forEach(function (item) {
+              mainContent.appendChild(item);
+            });
+    
+            mainContent.style.display = "grid";
+            isSorted = !isSorted;
+          });
+    
+    
+    
+    
+        </script>
       </div>
     </main>
     <footer>
