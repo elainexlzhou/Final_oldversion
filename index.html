@@ -68,7 +68,7 @@
 
     <img src="images/women_march_pano.jpg" width="200" alt="Image of the Ann Arbor Women's March" id='main_image'>
 
-    <div>
+    <div >
       <p id="introduction">
         This website started as an idea when Kelsey Toporski was a freshman in college taking my first <a href="https://lsa.umich.edu/women"> Women's Studies</a> class. As a junior, she had the skill set to make it happen. Growing up in a small, rural, conservative town, this class was really her first introduction to feminism and feminist thought, and she wanted to share her new found knowledge with others. This website is where a lot of feminist things could be compiled in one place, purely because people might not otherwise know about it. Her hometown may not have been forward thinking, but it did have internet connection.
       </p>
@@ -136,6 +136,63 @@
       Thanks for visiting! <i class='far'>&#xf581; </i>
     </p>
     <p>Orginal content created by Kelsey Toporski 2019</p>
+    <button id="subscribe-btn">Subscribe</button>
+
+    <div id="popup-container">
+      <div id="popup-box">
+        <span id="close-btn">&times;</span>
+        <h2>Subscribe to our Newsletter</h2>
+        <form id="subscribe-form">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        <p id="success-msg"></p>
+      </div>
+    </div>
+
+
+
+    <script>
+      const subscribeBtn = document.getElementById("subscribe-btn");
+      const popupContainer = document.getElementById("popup-container");
+      const closeBtn = document.getElementById("close-btn");
+      const successMsg = document.getElementById("success-msg");
+
+      subscribeBtn.addEventListener("click", function() {
+        popupContainer.style.display = "block";
+      });
+
+      closeBtn.addEventListener("click", function() {
+        popupContainer.style.display = "none";
+      });
+
+      popupContainer.addEventListener("click", function(event) {
+        if (event.target === popupContainer) {
+          popupContainer.style.display = "none";
+        }
+      });
+
+      const subscribeForm = document.getElementById("subscribe-form");
+
+      subscribeForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const nameInput = document.getElementById("name");
+        const emailInput = document.getElementById("email");
+        // Send the form data to your server using an AJAX request or a form submission.
+        // Display a success message to the user.
+        successMsg.textContent = "Thank you for subscribing, " + nameInput.value + "!";
+        // Hide the form and display the success message
+        subscribeForm.style.display = "none";
+        successMsg.style.display = "block";
+      });
+
+
+
+    </script>
+
     <div class="top">
       <a href="#top">Back to Top</a>
     </div>
